@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Add Product</h2>
+<mat-dialog-content  [formGroup]="form">
+    <div >
+        <mat-form-field>
+            <input matInput placeholder="Product Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input type="number" matInput placeholder="Price ($)" formControlName="price">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Product Description" formControlName="description"></textarea>
+        </mat-form-field>
+    </div>
+    
+</mat-dialog-content>
+
+<mat-dialog-actions class="float-right">
+
+    <button class="mat-raised-button" (click)="close()" style="margin-right: 4px;">
+        Cancel
+    </button>
+
+    <button [disabled]="form.invalid" class="mat-raised-button mat-primary button" (click)="save()">
+        Save
+    </button>
+
+</mat-dialog-actions>

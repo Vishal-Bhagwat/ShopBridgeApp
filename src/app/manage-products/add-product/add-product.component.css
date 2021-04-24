@@ -1,0 +1,12 @@
+.imagePreview{
+    max-width: 100px;
+}
+mat-form-field {
+    width: 100%;
+}
+.float-right{
+    float: right;
+}
+.button {
+    background-color: rgb(89 27 90);
+}
