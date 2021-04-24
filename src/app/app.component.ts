@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,26 @@ import { Component } from '@angular/core';
   // template: '<router-outlet> </router-outlet> ',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'ShopBridge';
   isMenuOpen: boolean;
+  public showContainer: boolean;
+  constructor(public breakpointObserver: BreakpointObserver) {}
+
+  ngOnInit() {
+    this.breakpointObserver
+      .observe(['(min-width: 600px)'])
+      .subscribe((state: BreakpointState) => {
+        console.log(state.matches);
+        if (state.matches) {
+          this.isMenuOpen = false;
+        } else {
+          this.isMenuOpen = true;
+        }
+        this.collpaseSideBar();
+      });
+  }
 
   collpaseSideBar(){
     this.isMenuOpen = !this.isMenuOpen;
